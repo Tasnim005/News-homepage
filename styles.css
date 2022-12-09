@@ -1,0 +1,284 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-button-volor: #000;
+}
+
+body {
+  position: relative;
+  font-family: "Inter", sans-serif;
+}
+
+nav {
+  width: 85%;
+  margin: 4rem auto 0;
+  /* position: sticky;
+  top: 0; */
+  display: flex;
+  align-items: center;
+  min-height: 10vh;
+}
+
+nav ul {
+  display: flex;
+  width: 40%;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul li:hover a {
+  color: hsl(5, 85%, 63%);
+}
+
+nav ul li a {
+  font-size: 1rem;
+  text-decoration: none;
+  color: black;
+}
+
+.primary {
+  background: transparent;
+  border: none;
+  display: none;
+  z-index: 10;
+}
+
+.primary .line {
+  transition: y 300ms ease-in 300ms, rotate 300ms ease-in, opacity 0ms 300ms;
+  transform-origin: center;
+}
+
+.primary[aria-expanded="true"] .line {
+  transition: y 300ms ease-in, rotate 300ms ease-in 300ms, opacity 0ms 300ms;
+}
+
+.primary[aria-expanded="true"] :is(.top, .bottom) {
+  y: 45;
+}
+
+.primary[aria-expanded="true"] .top {
+  rotate: 45deg;
+}
+
+.primary[aria-expanded="true"] .bottom {
+  rotate: -45deg;
+}
+
+.primary[aria-expanded="true"] .middle {
+  opacity: 0;
+}
+
+main {
+  /* width: 100%; */
+  width: 85%;
+  margin: 4rem auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    " landing landing article"
+    "featured featured featured";
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+header {
+  grid-area: landing;
+  height: auto;
+}
+
+header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+header .text {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  margin-top: 1.8rem;
+}
+
+header .text p {
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+p {
+  color: hsl(236, 13%, 42%);
+  font-size: 15px;
+}
+
+.secondary {
+  background: hsl(5, 85%, 63%);
+  padding: 0.7rem 1.3rem;
+  border: none;
+  color: white;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.secondary:hover {
+  background: hsl(240, 100%, 5%);
+}
+
+.landing img {
+  width: 100%;
+}
+
+article {
+  background: hsl(240, 100%, 5%);
+  grid-area: article;
+  padding: 1.8rem 1.4rem;
+}
+
+
+hr {
+  border: 0.11px solid hsl(236, 13%, 42%);
+}
+
+article .news p{
+  color: #BFBFBF;
+}
+
+.news p {
+  color: #5d5f79;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+  margin-bottom: 1.4rem;
+}
+
+h2 {
+  font-size: 2.3rem;
+  color: hsl(35, 77%, 62%);
+  margin-bottom: 1.4rem;
+}
+
+h3 {
+  color: white;
+  font-size: 1.2rem;
+  margin: 1.3rem 0 1rem;
+}
+
+h3:hover {
+  color: hsl(35, 77%, 62%);
+}
+
+.featured {
+  grid-area: featured;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.featured .feeds {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.feeds h2 {
+  color: #5F616A;
+  margin-bottom: 1rem;
+}
+
+.feeds .image img {
+  width: 100%;
+  min-height: 100%;
+  aspect-ratio: 1;
+}
+
+.featured .feeds .news {
+  margin: 0 1rem;
+}
+
+h4 {
+  margin: 1rem 0;
+}
+
+footer {
+  margin: 2.5rem auto 1rem auto;
+}
+.attribution {
+  font-size: 0.8rem;
+  text-align: center;
+}
+.attribution a {
+  color: #122FEB;
+  text-decoration: none;
+}
+
+
+@media (max-width: 800px) {
+  main {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "landing"
+      "article"
+      "featured";
+  }
+
+  header .text {
+    grid-template-columns: 1fr;
+  }
+
+  .featured {
+    grid-template-columns: 1fr;
+  }
+
+  nav {
+    width: 85%;
+    /* margin-top: 0; */
+    position: relative;
+  }
+
+  nav ul{
+    background: white;
+    position: fixed;
+    width: 60%;
+    height: 100vh;
+    flex-direction: column;
+    inset: 0;
+    clip-path: polygon(100% 0, 100% 100%, 100% 100%, 100% 0);
+    transition: 1s ease-out;
+    z-index: 1;
+    justify-content: space-evenly;
+  }
+
+  .primary {
+    position: absolute;
+    display: block;
+    z-index: 10;
+    top: 0;
+    right: 0;
+  }
+}
+
+body.dark{
+  background-color: grey;
+  background-blend-mode: multiply;
+}
+
+
+nav ul.open {
+  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+  -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+}
+
+.primary.close {
+  position: fixed;
+  width: 100%;
+  top: 1rem;
+  left: 44%;
+}
